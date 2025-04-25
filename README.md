@@ -50,6 +50,16 @@ pip install -r requirements.txt
 python app.py
 ```
 
+## 📸 Screenshots
+
+### Main Page
+![Main Page](static/screenshots/main-page.png)
+
+### Code Generation
+![Code Generation](static/screenshots/codegen.png)
+
+![Code Generation](static/screenshots/codedetail.png)
+
 ## 🏗️ Project Structure
 
 ```

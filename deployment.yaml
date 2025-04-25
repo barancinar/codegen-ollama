@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: codegen-ollama
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: codegen
+  template:
+    metadata:
+      labels:
+        app: codegen
+    spec:
+      containers:
+        - name: codegen
+          image: barancinar/codegen-ollama:v7.1
+          ports:
+            - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: codegen-service
+spec:
+  selector:
+    app: codegen
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: NodePort

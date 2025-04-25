@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Kod Üretici</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- PrismJS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-atom-dark.min.css" integrity="sha512-GZPS1oCebjx8g/ZkrTTvWirW+4wDkzIsilUQPXcZzuDpDzoH5brM2AojiFjo6ObIWeM68ZDostvdjaS9MNYCTg==" crossorigin="anonymous" referrerpolicy="no-referrer" />  
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    {% include 'navbar.html' %}
+    
+    <!-- Hero Section -->
+    <section class="hero-section py-5">
+        <div class="container text-center py-4">
+            <h1 class="display-4 fw-bold mb-3">Yapay Zeka İle Kod Üretin</h1>
+            <p class="fs-5 mb-4 px-3">Düşüncelerinizi koda dönüştüren güçlü AI teknolojisiyle tanışın</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container main-container pb-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Form Card -->
+                <div class="card mb-4">
+                    <div class="card-header py-3">
+                        <h5 class="m-0">Kod İsteğinizi Yazın</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div class="mb-3">
+                                <textarea name="prompt" class="form-control" rows="4" placeholder="Nasıl bir kod istediğinizi detaylı olarak açıklayın..." required></textarea>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary py-2">
+                                    <i class="fas fa-code me-2"></i>Kod Üret
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Result Card -->
+                {% if title %}
+                <div class="card">
+                    <div class="card-header py-3">
+                        <h5 class="m-0">Sonuç: {{ title }}</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="code-container">
+                            <div class="code-header">
+                                <span>Oluşturulan Kod</span>
+                                <button class="copy-btn" onclick="copyCode()">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                            <pre><code class="language-javascript">{{ code }}</code></pre>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        {% include 'features.html' %}
+        
+    </div>
+
+    <!-- Footer -->
+    {% include 'footer.html' %}
+    
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- PrismJS for code highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.min.js" integrity="sha512-UOoJElONeUNzQbbKQbjldDf9MwOHqxNz49NNJJ1d90yp+X9edsHyJoAs6O4K19CZGaIdjI5ohK+O2y5lBTW6uQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-javascript.min.js" integrity="sha512-yvw5BDA/GQu8umskpIOBhX2pDLrdOiriaK4kVxtD28QEGLV5rscmCfDjkrx52tIgzLgwzs1FsALV6eYDpGnEkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
